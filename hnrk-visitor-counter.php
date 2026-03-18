@@ -30,12 +30,20 @@ add_action( 'template_redirect', 'hnrk_track_visitor' );
 add_action( 'admin_menu', 'hnrk_create_admin_menu' );
 add_action( 'admin_enqueue_scripts', 'hnrk_enqueue_custom_css' );
 add_action( 'wp_dashboard_setup', 'hnrk_register_dashboard_widget' );
+add_action( 'wp_enqueue_scripts', 'hnrk_enqueue_consent_script' );
 
 /**
  * Load plugin translations.
  */
 function hnrk_load_textdomain() {
 	load_plugin_textdomain( 'hnrk-visitor-counter', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+}
+
+/**
+ * Enqueue frontend consent script for CookieYes integration.
+ */
+function hnrk_enqueue_consent_script() {
+	wp_enqueue_script( 'hnrk-consent', plugin_dir_url( __FILE__ ) . 'assets/js/consent.js', array(), '1.0.0', true );
 }
 
 /**
