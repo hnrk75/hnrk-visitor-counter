@@ -1,15 +1,9 @@
 <?php
 /**
- * HNRK Visitor Counter — main plugin file.
- *
- * @package HNRK_Visitor_Counter
- */
-
-/**
  * Plugin Name: HNRK Visitor Counter
  * Plugin URI:  https://hnrkagency.se
  * Description: Simple unique visitor counter. Cookie-based tracking with daily and all-time stats.
- * Version:     2.0
+ * Version:     1.0
  * Author: Henrik Pettersson at HNRK Labs
  * Author URI: https://hnrkagency.se
  * Text Domain: hnrk-visitor-counter

@@ -1,0 +1,67 @@
+# Copyright (C) 2026 Henrik Pettersson at HNRK Labs
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: HNRK Visitor Counter 2.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/hnrk-visitor-counter\n"
+"POT-Creation-Date: 2026-03-18T00:00:00+00:00\n"
+"PO-Revision-Date: 2026-03-18 00:00+0100\n"
+"Last-Translator: Henrik Pettersson\n"
+"Language-Team: \n"
+"Language: sv_SE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.9\n"
+"X-Domain: hnrk-visitor-counter\n"
+
+#. Plugin Name of the plugin
+#: hnrk-visitor-counter.php
+msgid "HNRK Visitor Counter"
+msgstr "HNRK Besöksräknare"
+
+#. Description of the plugin
+#: hnrk-visitor-counter.php
+msgid "Simple unique visitor counter. Cookie-based tracking with daily and all-time stats."
+msgstr "Enkel unik besöksräknare. Cookie-baserad spårning med daglig och total statistik."
+
+#. Author of the plugin
+#: hnrk-visitor-counter.php
+msgid "Henrik Pettersson at HNRK Labs"
+msgstr "Henrik Pettersson på HNRK Labs"
+
+#: includes/admin.php
+msgid "Visitor Counter"
+msgstr "Besöksräknare"
+
+#: includes/admin.php
+msgid "Visitors"
+msgstr "Besökare"
+
+#: includes/admin.php
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Du har inte behörighet att komma åt denna sida."
+
+#: includes/admin.php
+msgid "Total unique visitors"
+msgstr "Totalt unika besökare"
+
+#: includes/admin.php
+msgid "Unique visitors today"
+msgstr "Unika besökare idag"
+
+#: includes/admin.php
+msgid "Last 7 days"
+msgstr "Senaste 7 dagarna"
+
+#: includes/admin.php
+msgid "Date"
+msgstr "Datum"
+
+#: includes/admin.php
+msgid "Unique visitors"
+msgstr "Unika besökare"
+
+#: includes/admin.php
+msgid "Show total visitor count anywhere with the shortcode %s"
+msgstr "Visa totalt besökarantal var som helst med shortcoden %s"
