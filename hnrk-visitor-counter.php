@@ -1,5 +1,11 @@
 <?php
 /**
+ * HNRK Visitor Counter
+ *
+ * @package HNRK_Visitor_Counter
+ */
+
+/**
  * Plugin Name: HNRK Visitor Counter
  * Plugin URI:  https://hnrkagency.se
  * Description: Simple unique visitor counter. Cookie-based tracking with daily and all-time stats.
@@ -23,7 +29,7 @@ add_action( 'plugins_loaded', 'hnrk_load_textdomain' );
 add_action( 'template_redirect', 'hnrk_track_visitor' );
 add_action( 'admin_menu', 'hnrk_create_admin_menu' );
 add_action( 'admin_enqueue_scripts', 'hnrk_enqueue_custom_css' );
-add_shortcode( 'hnrk_visitor_count', 'hnrk_visitor_count_shortcode' );
+add_action( 'wp_dashboard_setup', 'hnrk_register_dashboard_widget' );
 
 /**
  * Load plugin translations.
@@ -41,13 +47,4 @@ function hnrk_enqueue_custom_css( $hook ) {
 	if ( 'toplevel_page_hnrk-visitor-counter' === $hook ) {
 		wp_enqueue_style( 'hnrk-admin-style', plugin_dir_url( __FILE__ ) . 'assets/css/style.css', array(), '2.0.0' );
 	}
-}
-
-/**
- * Shortcode to display total unique visitor count.
- *
- * @return string
- */
-function hnrk_visitor_count_shortcode() {
-	return number_format_i18n( (int) get_option( 'hnrk_visitor_count_total', 0 ) );
 }

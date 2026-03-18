@@ -39,7 +39,24 @@ function hnrk_track_visitor() {
 }
 
 /**
+ * Return a hashed representation of the current visitor's IP address.
+ *
+ * @return string SHA-256 hash of the IP, or empty string if unavailable.
+ */
+function hnrk_get_ip_hash() {
+	$ip = '';
+	if ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
+		$forwarded = sanitize_text_field( wp_unslash( $_SERVER['HTTP_X_FORWARDED_FOR'] ) );
+		$ip        = trim( explode( ',', $forwarded )[0] );
+	} elseif ( ! empty( $_SERVER['REMOTE_ADDR'] ) ) {
+		$ip = sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) );
+	}
+	return $ip ? hash( 'sha256', $ip ) : '';
+}
+
+/**
  * Count a visitor as unique for today if not already seen today.
+ * Deduplicates on both cookie UUID and IP hash.
  *
  * @param string $visitor_id UUID from the visitor cookie.
  */
@@ -52,12 +69,21 @@ function hnrk_maybe_count_daily( $visitor_id ) {
 		$seen = array();
 	}
 
-	$hash = md5( $visitor_id );
-	if ( in_array( $hash, $seen, true ) ) {
+	$cookie_hash = md5( $visitor_id );
+	$ip_hash     = hnrk_get_ip_hash();
+
+	// Skip if cookie or IP has already been counted today.
+	if ( in_array( $cookie_hash, $seen['cookies'] ?? array(), true ) ) {
+		return;
+	}
+	if ( $ip_hash && in_array( $ip_hash, $seen['ips'] ?? array(), true ) ) {
 		return;
 	}
 
-	$seen[] = $hash;
+	$seen['cookies'][] = $cookie_hash;
+	if ( $ip_hash ) {
+		$seen['ips'][] = $ip_hash;
+	}
 
 	// Expire at next midnight (UTC).
 	$seconds_left = strtotime( 'tomorrow' ) - time();
@@ -75,5 +101,5 @@ function hnrk_get_daily_count( $date = '' ) {
 		$date = gmdate( 'Y-m-d' );
 	}
 	$seen = get_transient( 'hnrk_daily_' . $date );
-	return is_array( $seen ) ? count( $seen ) : 0;
+	return is_array( $seen ) ? count( $seen['cookies'] ?? array() ) : 0;
 }

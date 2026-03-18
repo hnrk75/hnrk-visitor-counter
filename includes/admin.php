@@ -62,15 +62,37 @@ function hnrk_display_admin_page() {
 			</div>
 		</div>
 
-		<p class="description">
-			<?php
-			printf(
-				/* translators: %s: shortcode */
-				esc_html__( 'Show total visitor count anywhere with the shortcode %s', 'hnrk-visitor-counter' ),
-				'<code>[hnrk_visitor_count]</code>'
-			);
-			?>
-		</p>
+	</div>
+	<?php
+}
+
+/**
+ * Register the Dashboard widget.
+ */
+function hnrk_register_dashboard_widget() {
+	wp_add_dashboard_widget(
+		'hnrk_visitor_counter_widget',
+		__( 'Visitor Counter', 'hnrk-visitor-counter' ),
+		'hnrk_render_dashboard_widget'
+	);
+}
+
+/**
+ * Render the Dashboard widget.
+ */
+function hnrk_render_dashboard_widget() {
+	$total = (int) get_option( 'hnrk_visitor_count_total', 0 );
+	$today = hnrk_get_daily_count();
+	?>
+	<div style="display:flex;gap:24px;padding:4px 0">
+		<div>
+			<strong style="font-size:1.8em;display:block;line-height:1"><?php echo esc_html( number_format_i18n( $total ) ); ?></strong>
+			<span><?php esc_html_e( 'Total unique visitors', 'hnrk-visitor-counter' ); ?></span>
+		</div>
+		<div>
+			<strong style="font-size:1.8em;display:block;line-height:1"><?php echo esc_html( number_format_i18n( $today ) ); ?></strong>
+			<span><?php esc_html_e( 'Unique visitors today', 'hnrk-visitor-counter' ); ?></span>
+		</div>
 	</div>
 	<?php
 }
