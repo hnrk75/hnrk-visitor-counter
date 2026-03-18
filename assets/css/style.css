@@ -1,1 +1,49 @@
-.hnrk-stat-boxes{display:flex;gap:1.5rem;margin-bottom:2rem}.hnrk-stat-box{display:flex;flex-direction:column;align-items:center;padding:1.5rem 2rem;background:#fff;border:1px solid #ddd;border-radius:.25rem;min-width:160px}.hnrk-stat-number{font-size:2.5rem;font-weight:bold;line-height:1;color:#1d2327}.hnrk-stat-label{margin-top:.5rem;font-size:.875rem;color:#646970;text-align:center}.hnrk-logs-container{display:flex;flex-direction:column;border:1px solid #ddd;border-radius:.25rem;overflow:hidden;max-width:480px;margin-bottom:1.5rem}.hnrk-log-header{display:flex;background-color:#f1f1f1;font-weight:bold}.hnrk-log-body{display:flex;flex-direction:column}.hnrk-log-row{display:flex;border-bottom:1px solid #ddd}.hnrk-log-row:nth-child(odd){background-color:#f9f9f9}.hnrk-log-row:last-child{border-bottom:none}.hnrk-log-cell{flex:1;padding:.625rem;border-right:1px solid #ddd;text-align:left}.hnrk-log-cell:last-child{border-right:none}@media(max-width:960px){.hnrk-stat-boxes{flex-direction:column}.hnrk-log-header{display:none}.hnrk-log-row{flex-direction:column}.hnrk-log-row:last-child .hnrk-log-cell{border-bottom:none}.hnrk-log-cell{border-right:none;border-bottom:1px solid #ddd}}
+/* Stat boxes */
+.hnrk-stat-boxes{display:flex;gap:1.5rem;margin-bottom:2rem;flex-wrap:wrap}
+.hnrk-stat-box{display:flex;flex-direction:column;align-items:center;padding:1.5rem 2rem;background:#fff;border:1px solid #ddd;border-radius:.25rem;min-width:160px}
+.hnrk-stat-number{font-size:2.5rem;font-weight:bold;line-height:1;color:#1d2327}
+.hnrk-stat-label{margin-top:.5rem;font-size:.875rem;color:#646970;text-align:center}
+
+/* Cards layout */
+.hnrk-cards{display:flex;gap:1rem;flex-wrap:wrap;align-items:flex-start}
+.hnrk-card{flex:1;min-width:220px;background:#fff;border:1px solid #ddd;border-radius:.25rem;padding:1rem 1.25rem}
+.hnrk-card h2{margin:0 0 .75rem;font-size:1rem;font-weight:600;color:#1d2327}
+.hnrk-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem}
+.hnrk-card-head h2{margin:0}
+
+/* Nav buttons */
+.hnrk-chart-nav{display:flex;gap:4px}
+.hnrk-nav-btn{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#f0f0f1;border:1px solid #ddd;border-radius:3px;text-decoration:none;font-size:1em;color:#1d2327;line-height:1;cursor:pointer}
+.hnrk-nav-btn:hover{background:#ddd}
+.hnrk-nav-disabled{opacity:.4;cursor:default}
+
+/* Vertical bar chart */
+.hnrk-chart{display:flex;gap:2px;height:150px;align-items:flex-end;width:100%;box-sizing:border-box;overflow:hidden}
+.hnrk-bar-col{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;flex:1;min-width:4px;height:100%}
+.hnrk-bar-count{font-size:9px;color:#646970;line-height:1.3;text-align:center;overflow:hidden;white-space:nowrap}
+.hnrk-bar{width:100%;background:#2271b1;border-radius:2px 2px 0 0;flex-shrink:0}
+.hnrk-bar-label{font-size:9px;color:#646970;margin-top:2px;white-space:nowrap;flex-shrink:0}
+.hnrk-bar-col.hnrk-bar-future .hnrk-bar{background:#e2e8f0}
+.hnrk-bar-col.hnrk-bar-today .hnrk-bar{background:#d63638}
+
+/* Horizontal bar chart */
+.hnrk-hbar-chart{display:flex;flex-direction:column;gap:5px}
+.hnrk-hbar-row{display:flex;align-items:center;gap:6px}
+.hnrk-hbar-label{width:48px;font-size:12px;color:#646970;flex-shrink:0}
+.hnrk-hbar-track{flex:1;height:12px;background:#f0f0f1;border-radius:2px;overflow:hidden}
+.hnrk-hbar-bar{height:100%;background:#2271b1;border-radius:2px}
+.hnrk-hbar-count{width:28px;font-size:12px;color:#1d2327;text-align:right;flex-shrink:0}
+.hnrk-hbar-row.hnrk-hbar-today .hnrk-hbar-bar{background:#d63638}
+.hnrk-hbar-row.hnrk-hbar-today .hnrk-hbar-label{color:#d63638;font-weight:600}
+
+/* Dashboard widget stats */
+.hnrk-widget-stats{display:flex;gap:8px;margin-bottom:12px}
+.hnrk-widget-stat{flex:1;padding:8px 12px;border:1px solid #ddd;border-radius:4px;text-align:center}
+.hnrk-widget-stat strong{display:block;font-size:1.5em;line-height:1;color:#1d2327}
+.hnrk-widget-stat span{font-size:11px;color:#646970}
+
+@media(max-width:960px){
+  .hnrk-stat-boxes{flex-direction:column}
+  .hnrk-cards{flex-direction:column}
+  .hnrk-card{min-width:0;width:100%;box-sizing:border-box}
+}

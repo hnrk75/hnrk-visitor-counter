@@ -12,12 +12,30 @@ define( 'HNRK_COOKIE_NAME', 'hnrk_visitor' );
 define( 'HNRK_COOKIE_LIFETIME', YEAR_IN_SECONDS );
 
 /**
+ * Check whether the visitor has accepted analytics cookies via CookieYes.
+ *
+ * @return bool
+ */
+function hnrk_has_analytics_consent() {
+	if ( ! isset( $_COOKIE['cookieyes-consent'] ) ) {
+		return false;
+	}
+	$consent = sanitize_text_field( wp_unslash( $_COOKIE['cookieyes-consent'] ) );
+	return str_contains( $consent, 'analytics:yes' );
+}
+
+/**
  * Track the current visitor if they haven't been seen before.
  * Called on template_redirect so headers haven't been sent yet.
  */
 function hnrk_track_visitor() {
 	// Skip admin, REST, cron, and logged-in admins/editors.
 	if ( is_admin() || wp_doing_cron() || wp_doing_ajax() ) {
+		return;
+	}
+
+	// Respect CookieYes analytics consent.
+	if ( ! hnrk_has_analytics_consent() ) {
 		return;
 	}
 
@@ -88,6 +106,11 @@ function hnrk_maybe_count_daily( $visitor_id ) {
 	// Expire at next midnight (UTC).
 	$seconds_left = strtotime( 'tomorrow' ) - time();
 	set_transient( $key, $seen, $seconds_left );
+
+	// Persist the updated daily count permanently for monthly/yearly stats.
+	$archive           = (array) get_option( 'hnrk_visitor_archive', array() );
+	$archive[ $today ] = count( $seen['cookies'] );
+	update_option( 'hnrk_visitor_archive', $archive, false );
 }
 
 /**

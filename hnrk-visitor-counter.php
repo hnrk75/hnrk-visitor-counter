@@ -44,7 +44,8 @@ function hnrk_load_textdomain() {
  * @param string $hook Current admin page hook.
  */
 function hnrk_enqueue_custom_css( $hook ) {
-	if ( 'toplevel_page_hnrk-visitor-counter' === $hook ) {
+	$allowed = array( 'toplevel_page_hnrk-visitor-counter', 'index.php' );
+	if ( in_array( $hook, $allowed, true ) ) {
 		wp_enqueue_style( 'hnrk-admin-style', plugin_dir_url( __FILE__ ) . 'assets/css/style.css', array(), '2.0.0' );
 	}
 }
