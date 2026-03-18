@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<ruleset name="HNRK Visitor Counter">
+    <description>WordPress Coding Standards for HNRK Visitor Counter</description>
+
+    <rule ref="WordPress"/>
+
+    <!-- Scan these files -->
+    <file>.</file>
+
+    <!-- Ignore these folders -->
+    <exclude-pattern>vendor/</exclude-pattern>
+    <exclude-pattern>node_modules/</exclude-pattern>
+
+    <!-- Only scan PHP files -->
+    <arg name="extensions" value="php"/>
+</ruleset>

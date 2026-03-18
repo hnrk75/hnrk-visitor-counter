@@ -1,0 +1,108 @@
+// Variables
+$border-color: #ddd;
+$header-bg: #f1f1f1;
+$row-odd-bg: #f9f9f9;
+$cell-padding: 0.625rem;
+$breakpoint-mobile: 960px;
+
+// Stat boxes
+.hnrk-stat-boxes {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.hnrk-stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: #fff;
+  border: 1px solid $border-color;
+  border-radius: 0.25rem;
+  min-width: 160px;
+}
+
+.hnrk-stat-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 1;
+  color: #1d2327;
+}
+
+.hnrk-stat-label {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #646970;
+  text-align: center;
+}
+
+// Table
+.hnrk-logs-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $border-color;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  max-width: 480px;
+  margin-bottom: 1.5rem;
+}
+
+.hnrk-log-header {
+  display: flex;
+  background-color: $header-bg;
+  font-weight: bold;
+}
+
+.hnrk-log-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.hnrk-log-row {
+  display: flex;
+  border-bottom: 1px solid $border-color;
+
+  &:nth-child(odd) {
+    background-color: $row-odd-bg;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.hnrk-log-cell {
+  flex: 1;
+  padding: $cell-padding;
+  border-right: 1px solid $border-color;
+  text-align: left;
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+// Responsive
+@media (max-width: $breakpoint-mobile) {
+  .hnrk-stat-boxes {
+    flex-direction: column;
+  }
+
+  .hnrk-log-header {
+    display: none;
+  }
+
+  .hnrk-log-row {
+    flex-direction: column;
+
+    &:last-child .hnrk-log-cell {
+      border-bottom: none;
+    }
+  }
+
+  .hnrk-log-cell {
+    border-right: none;
+    border-bottom: 1px solid $border-color;
+  }
+}

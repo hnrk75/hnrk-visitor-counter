@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(phpcbf --standard=WordPress --extensions=php .)",
+      "Bash(phpcs --standard=WordPress --extensions=php .)",
+      "Read(//Users/henpet/Library/Application Support/Code/User/**)",
+      "Bash(sass scss/style.scss css/style.css --style=compressed --no-source-map)",
+      "Read(//Users/henpet/Local Sites/WordPress/plugins/**)",
+      "Bash(rm -rf hnrk-user-activity-log/.git)",
+      "Bash(mv hnrk-user-activity-log:*)"
+    ],
+    "additionalDirectories": [
+      "/Users/henpet/Local Sites/WordPress/plugins/hnrk-user-activity-log",
+      "/Users/henpet/Library/Application Support/Code/User"
+    ]
+  }
+}

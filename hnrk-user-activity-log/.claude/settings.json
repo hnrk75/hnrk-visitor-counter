@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/henpet/**)",
+      "Bash(rm -rf \"/Users/henpet/Local Sites/WordPress/plugins/hnrk-user-activity-log/.git\")",
+      "Bash(mv \"/Users/henpet/Local Sites/WordPress/plugins/hnrk-user-activity-log\" \"/Users/henpet/Local Sites/WordPress/plugins/hnrk-visitor-counter\")"
+    ]
+  }
+}
